@@ -1,0 +1,36 @@
+experiment:
+
+  backend: pytorch
+
+  dataset: ovs
+
+  data_config:
+    strategy: dataset
+    dataset_path: ../data/{0}/woman.tsv
+
+  splitting:
+    test_splitting:
+      strategy: temporal_hold_out
+      test_ratio: 0.2
+    validation_splitting:
+      strategy: temporal_hold_out
+      test_ratio: 0.1
+
+  top_k: 50
+
+  evaluation:
+    cutoffs: [10, 20, 50]
+    simple_metrics: [nDCG, Precision, Recall, ItemCoverage, Gini]
+    relevance_threshold: 0
+    validation_metric: nDCG@5
+
+  gpu: 0
+
+  external_models_path: ../external/models/__init__.py
+
+  models:
+    UserKNN:
+      neighbors: 910
+      similarity: cosine
+      implementation: classical
+      random_seed: 42
