@@ -32,4 +32,4 @@ experiment:
     EASER:
       meta:
         verbose: True
-      l2_norm: 20
+      l2_norm: [8, 15, 18, 20, 22, 25, 30, 40]
